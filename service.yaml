@@ -3,11 +3,10 @@ kind: Service
 metadata:
   name: nginx
 spec:
-  type: LoadBalancer #NodePort #ClusterIP
+  type: ClusterIP #LoadBalancer #NodePort #ClusterIP
   selector:
     app: nginx
   ports:
     - protocol: TCP
       port: 8081 # port exposed by the service
       targetPort: 80 # port to be accessed on pod
-      # nodePort: 30007 # node port
