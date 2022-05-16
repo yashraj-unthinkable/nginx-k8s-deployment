@@ -8,6 +8,6 @@ spec:
     app: nginx
   ports:
     - protocol: TCP
-      port: 8080
-      targetPort: 80
-      nodePort: 30007
+      port: 8081 # port exposed by the service
+      targetPort: 80 # port to be accessed on pod
+      nodePort: 30007 # node port
