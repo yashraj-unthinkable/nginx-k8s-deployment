@@ -20,6 +20,9 @@ spec:
           imagePullPolicy: Always
           ports:
             - containerPort: 80
+          volumeMounts:
+          - name: nginx-storage
+            mountPath: /tmp
           resources:
             requests:
               memory: "40Mi"
@@ -27,3 +30,6 @@ spec:
             limits:
               memory: "80Mi"
               cpu: "150m"
+      volumes:
+      - name: nginx-storage
+        emptyDir: {}
