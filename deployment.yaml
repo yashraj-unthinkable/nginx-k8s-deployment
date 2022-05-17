@@ -14,6 +14,10 @@ spec:
       labels:
         app: nginx
     spec:
+      volumes:
+        - name: nginx-volume
+          persistentVolumeClaim:
+            claimName: nginx
       containers:
         - name: nginx
           image: nginx:latest
@@ -21,8 +25,8 @@ spec:
           ports:
             - containerPort: 80
           volumeMounts:
-          - name: nginx-storage
-            mountPath: /tmp
+            - mountPath: "/tmp"
+              name: nginx-volume
           resources:
             requests:
               memory: "40Mi"
@@ -30,6 +34,3 @@ spec:
             limits:
               memory: "80Mi"
               cpu: "150m"
-      volumes:
-      - name: nginx-storage
-        emptyDir: {}
