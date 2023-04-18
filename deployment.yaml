@@ -18,6 +18,18 @@ spec:
         - name: nginx-volume
           persistentVolumeClaim:
             claimName: nginx
+      
+      nodeSelector:
+        NodeGroupType: instrumentation
+
+      # -- [Tolerations] for use with node taints
+      tolerations:
+        - effect: NoSchedule
+          key: dedicated
+          operator: Equal
+          value: instrumentation
+
+
       containers:
         - name: nginx
           image: nginx:latest
